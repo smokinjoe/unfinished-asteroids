@@ -1,5 +1,5 @@
 ENGINE.Bullet = function(args) {
-
+    
   Utils.extend(this, {
 
     direction: 0,
@@ -48,10 +48,14 @@ ENGINE.Bullet.prototype = {
     app.game.wrap(this);
   },
 
+  create: function () {
+    alert('hello');
+    app.loadImage('spritesheet')
+  },
+  
   render: function() {
-
-    app.layer.fillStyle("#fff").fillRect(this.x - 4, this.y - 4, 8, 8);
-
+    var sprite = [20, 53, 6, 6];
+    app.layer.drawRegion(app.images.spritesheet, sprite, this.x - 4, this.y - 4, 1);
   }
 
 };
