@@ -1,7 +1,6 @@
 ENGINE.Player = function(args) {
 
   Utils.extend(this, {
-
     /* movement */
 
     direction: 0,
@@ -23,7 +22,9 @@ ENGINE.Player = function(args) {
     maxCooldown: 0.3,
 
     hp: 10,
-    maxHp: 10
+    maxHp: 10,
+    
+    score: 0
 
   }, args);
 

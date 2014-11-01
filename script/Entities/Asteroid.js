@@ -1,7 +1,6 @@
 ENGINE.Asteroid = function(args) {
 
   Utils.extend(this, {
-
     direction: 0,
     speed: 50,
     splits: 3
@@ -34,14 +33,18 @@ ENGINE.Asteroid.prototype = {
     if (this.hp <= 0) {
 
       if (this.splits) this.split();
-
       this.collection.remove(this);
+      this.collection.add(ENGINE.Coin, {
+        x: this.x,
+        y: this.y
+      });
     }
 
     app.playSound('asteroid-hit')
   },
 
   split: function() {
+    var player = app.game.players[0];
 
     for (var i = 0; i < 2; i++) {
       this.collection.add(ENGINE.Asteroid, {
@@ -51,15 +54,17 @@ ENGINE.Asteroid.prototype = {
         direction: Math.random() * 6
       });
     }
-
+    
+    player.score += 1;
     app.playSound('asteroid-crush')
   },
 
   step: function(delta) {
-
     /* lifespan */
 
-    if ((this.lifespan -= delta) < 0) this.collection.remove(this);
+    if ((this.lifespan -= delta) < 0) {
+      this.collection.remove(this);
+    }
 
     /* movement */
 

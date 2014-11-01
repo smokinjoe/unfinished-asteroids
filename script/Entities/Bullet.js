@@ -1,7 +1,6 @@
 ENGINE.Bullet = function(args) {
     
   Utils.extend(this, {
-
     direction: 0,
     speed: 300,
     lifespan: 2
