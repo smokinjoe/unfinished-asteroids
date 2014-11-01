@@ -44,13 +44,7 @@ ENGINE.Bullet.prototype = {
     this.y += Math.sin(this.direction) * this.speed * delta;
 
     /* wrap */
-
     app.game.wrap(this);
-  },
-
-  create: function () {
-    alert('hello');
-    app.loadImage('spritesheet')
   },
   
   render: function() {

@@ -38,6 +38,7 @@ ENGINE.Asteroid.prototype = {
       this.collection.remove(this);
     }
 
+    app.playSound('asteroid-hit')
   },
 
   split: function() {
@@ -51,6 +52,7 @@ ENGINE.Asteroid.prototype = {
       });
     }
 
+    app.playSound('asteroid-crush')
   },
 
   step: function(delta) {
