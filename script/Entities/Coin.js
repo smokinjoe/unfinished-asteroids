@@ -18,11 +18,23 @@ ENGINE.Coin.prototype = {
   },
   
   step: function (delta) {
-    
+
   },
   
   render: function (delta) {
-    app.layer.fillStyle("#ff0").fillCircle(this.x, this.y, this.radius);
+    //app.layer.fillStyle("#ff0").fillCircle(this.x, this.y, this.radius);
+    var lastTick = Date.now(),
+        image = app.images.coins,
+        duration = 1;
+    
+    setInterval(function loop() {
+      var delta = (Date.now() - lastTick) / 1000,
+          frame = 7 * (delta % duration / duration) | 0,
+          sprite = [frame * 11, 1, 8, 8];
+      app.layer.drawRegion(image, sprite, this.x, this.y, 1);
+    }, 16);
+
+    lastTick = Date.now();
   }
   
 };
